@@ -1,0 +1,63 @@
+CREATE TABLE FDO (
+  Username VARCHAR(50) NOT NULL PRIMARY KEY,
+  Password VARCHAR(255) NOT NULL,
+  Email VARCHAR(255) NOT NULL,
+  Number varchar(50) NOT NULL
+);
+
+CREATE TABLE DEO (
+  Username VARCHAR(50) NOT NULL PRIMARY KEY,
+  Password VARCHAR(255) NOT NULL,
+  Email VARCHAR(255) NOT NULL,
+  Number varchar(50) NOT NULL
+);
+
+CREATE TABLE DBA (
+  Username VARCHAR(50) PRIMARY KEY,
+  Password VARCHAR(255) NOT NULL,
+  Email VARCHAR(255) NOT NULL,
+  Number varchar(50) NOT NULL
+);
+
+create table Department(DepartmentID int NOT NULL,name varchar(50) NOT NULL,primary key(DepartmentID));
+
+create table DOC (Username varchar(50) NOT NULL,Password varchar(50) NOT NULL,Email varchar(50) NOT NULL,Number varchar(50) NOT NULL,DepartmentID int NOT NULL,primary key(Username),foreign key(DepartmentID) references Department(DepartmentID));
+
+create table Patient(SSN int NOT NULL,Name varchar(50) NOT NULL,Address varchar(255) NOT NULL,Phone varchar(50),InsuranceID int NOT NULL,PCP varchar(50),AppointmentStatus BOOLEAN default false,primary key(SSN),foreign key(PCP) references DOC(Username));
+
+create table Room(Number int NOT NULL,Unavailable BOOLEAN DEFAULT false,primary key(Number));
+
+create table Stay(StayID int NOT NULL AUTO_INCREMENT,Room int NOT NULL,Patient int NOT NULL,primary key(StayID),foreign key(Room) references Room(Number),foreign key(Patient) references Patient(SSN));
+
+create table Image(Name varchar(200) not null,Data LONGBLOB,primary key(Name));
+
+create table Appointment(AppointmentID int AUTO_INCREMENT,Patient int NOT NULL,Physician varchar(50) NOT NULL,Slot INT NOT NULL,Date DATE NOT NULL,primary key(AppointmentID),foreign key(Patient) references Patient(SSN),foreign key(Physician) references DOC(Username));
+
+create table Prescribes(Physician varchar(50) NOT NULL,Patient int NOT NULL,Image varchar(50) NOT NULL,Description varchar(1000), Appointment int,primary key(Physician,Patient,Image),foreign key(Physician) references DOC(Username),foreign key(Image) references Image(Name));
+
+create table Previous_Patients(SSN int NOT NULL,Name varchar(50) NOT NULL,Address varchar(255) NOT NULL,Phone varchar(50),InsuranceID int NOT NULL,PCP varchar(50),AppointmentStatus BOOLEAN default false,primary key(SSN),foreign key(PCP) references DOC(Username));
+
+create table Appointment_1(AppointmentID int AUTO_INCREMENT,Patient int NOT NULL,Physician varchar(50) NOT NULL,Slot INT NOT NULL,Date DATE NOT NULL,primary key(AppointmentID),foreign key(Patient) references Patient(SSN),foreign key(Physician) references DOC(Username));
+
+INSERT INTO Department (DepartmentID, name) VALUES (1, 'Emergency');
+INSERT INTO Department (DepartmentID, name) VALUES (2, 'Cardiology');
+INSERT INTO Department (DepartmentID, name) VALUES (3, 'Pediatrics');
+INSERT INTO Department (DepartmentID, name) VALUES (4, 'Oncology');
+INSERT INTO Department (DepartmentID, name) VALUES (5, 'Neurology');
+
+INSERT INTO Room (Number) VALUES (101);
+INSERT INTO Room (Number) VALUES (102);
+INSERT INTO Room (Number) VALUES (103);
+INSERT INTO Room (Number) VALUES (201);
+INSERT INTO Room (Number) VALUES (202);
+INSERT INTO Room (Number) VALUES (203);
+INSERT INTO Room (Number) VALUES (301);
+INSERT INTO Room (Number) VALUES (302);
+INSERT INTO Room (Number) VALUES (303);
+INSERT INTO Room (Number) VALUES (401);
+
+INSERT INTO Patient (SSN, Name, Address, Phone, InsuranceID) VALUES (1, 'pat1', 'abc', '1234567890', 1);
+INSERT INTO Patient (SSN, Name, Address, Phone, InsuranceID) VALUES (2, 'pat2', 'abc', '1234567890', 2);
+INSERT INTO Patient (SSN, Name, Address, Phone, InsuranceID) VALUES (3, 'pat3', 'abc', '1234567890', 3);
+INSERT INTO Patient (SSN, Name, Address, Phone, InsuranceID) VALUES (4, 'pat4', 'abc', '1234567890', 4);
+INSERT INTO Patient (SSN, Name, Address, Phone, InsuranceID) VALUES (5, 'pat5', 'abc', '1234567890', 5);
