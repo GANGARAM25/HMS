@@ -1,0 +1,382 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+	text-decoration: none;
+	list-style: none;
+	scroll-behavior: smooth;
+}
+:root{
+	--bg-color: #ffffff;
+	--second-bg-color: #05043d;
+	--text-color: rgb(0, 0, 0);
+	--second-color: rgb(0, 0, 0);
+	--main-color: #ff4d05;
+	--big-font: 5rem;
+	--h2-font: 3rem;
+	--p-font: 1.1rem;
+}
+
+body{
+	background: var(--bg-color);
+	color: var(--text-color);
+}
+
+header{
+    position: fixed;
+    top: 0px;
+    display: flex;
+    z-index: 1000;
+    /* background: rgb(20, 41, 178); */
+    background: var(--second-bg-color);
+    width: 100%;
+    height: 64px;
+    border-bottom: 1px solid transparent;
+	transition: all .45s ease;
+}
+
+.navbar {
+    display: flex;
+    max-width: 1500px;
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    padding: 0 20px;
+    width: 100%;
+    height: 100%;
+}
+
+span{
+	color: var(--main-color);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav--logo {
+    position: relative;
+    top: -2px;
+}
+
+.nav--logo span {
+    font-size: 25px;
+    font-weight: 600;
+    position: relative;
+    top: 1px;
+    color: white;
+}
+
+.nav--logo b {
+    font-size: 23px;
+    font-weight: 700;
+    padding: 3px 10px;
+    background-color: rgb(0 163 255);
+    color: white;
+    border-radius: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.btn {
+    display: inline-block;
+    position: relative;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.is-w {
+    background-color: white;
+    color: black;
+    box-shadow: 0px 20px 50px rgba(255, 255, 255, 0.1);
+}
+
+.nav-right .btn:hover {
+    background-color: #ff4d05;
+    color: white;
+}
+
+.navlist a.active{
+	color: var(--main-color);
+}
+
+section{
+	padding: 90px 8% 30px;
+}
+
+.home{
+	position: relative;
+	height: fit-content;
+	width: 100%;
+	justify-content: center;
+    align-items: center;
+}
+.slide{
+	margin-bottom: 10px;
+    text-align: center;
+    padding: 1px 15% 5px;
+}
+.one{
+	display: inline-block;
+	margin-right: 15px;
+	padding: 1px 10px;
+	font-size: 30px;
+	font-weight: 400;
+	border-radius: 10px;
+	background: var(--main-color);
+	color: var(--text-color);
+}
+.two{
+	display: inline-block;
+	color: var(--second-color);
+	font-size: 27px;
+	font-weight: 400;
+}
+
+.picture{
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+    margin-bottom: 30px;
+}
+.picture img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide h1{
+    font-size:2rem;
+    line-height: 1.1;
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: var(--text-color);
+}
+
+.slide p{
+    font-size: var(--p-font);
+    line-height: 1.8;
+    margin-bottom: 60px;
+    color: var(--second-color);
+}
+
+.info{
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+	margin-top: 5rem;
+    position: relative;
+	border-radius: 8px;
+	cursor: pointer;
+    margin: 0 auto;
+}
+
+.box{
+    background: var(--main-color);	
+    border-radius: 8px;
+	justify-content: center;
+	color: black;
+	transition: height 0.5s;
+    width: 100%;
+    padding-top: 8px;
+}
+
+.box:hover{
+    background:  #05043d;
+    color: white;
+}
+
+.box h3{
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.box p{
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.8;
+}
+
+.contact{
+	background: var(--second-bg-color);
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	align-items: center;
+	gap: 2.5rem;
+}
+
+.contact-text h4{
+	color: white;
+	margin: 18px 0;
+	font-size: 20px;
+	font-weight: 600;
+}
+.contact-text h2{
+	font-size: var(--h2-font);
+    color: white;
+	line-height: 1;
+}
+.contact-text p{
+	color: var(--second-color);
+	font-size: var(--p-font);
+	line-height: 1.8;
+	margin-bottom: 30px;
+}
+
+.list{
+	margin-bottom: 2.8rem;
+}
+.list li{
+	margin-bottom: 12px;
+}
+.list li a{
+	display: block;
+	color: white;
+	font-size: 14px;
+	transition: all .45s ease;
+}
+.list li a:hover{
+	color: red;
+	transform: translateX(5px);
+}
+.contact-icons i{
+	height: 45px;
+	width: 45px;
+	background: var(--main-color);
+	color: var(--text-color);
+	font-size: 22px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	margin-right: 15px;
+	transition: all .45s ease;
+}
+.contact-icons i:hover{
+	background: var(--text-color);
+	color: var(--main-color);
+}
+
+.contact-form form{
+	position: relative;
+}
+.contact-form form input,
+form textarea{
+	width: 100%;
+	padding: 14px;
+	background: var(--bg-color);
+	color: var(--text-color);
+	border: none;
+	outline: none;
+	font-size: 15px;
+	border-radius: 8px;
+	margin-bottom: 10px;
+}
+.contact-form textarea{
+	resize: none;
+	height: 240px;
+}
+.contact-form .submit{
+	display: inline-block;
+	font-size: 16px;
+	background: var(--main-color);
+	color: var(--text-color);
+	width: 160px;
+	transition: all .45s ease;
+}
+.contact-form .submit:hover{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+.end{
+	padding: 20px 15%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 2rem;
+	background: var(--bg-color);
+}
+.last-text p{
+	color: var(--second-color);
+	font-size: 14px;
+}
+.top i{
+	padding: 10px;
+	border-radius: 8px;
+	font-size: 15px;
+	color: var(--text-color);
+	background: var(--main-color);
+}
+
+.contact-form1 form{
+	position: relative;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.contact-form1 form input,
+form textarea{
+	width: 500px;
+	padding: 12px;
+	background: var(--bg-color);
+	color: var(--text-color);
+	border: none;
+	outline: none;
+	font-size: 15px;
+	border-radius: 8px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+.contact-form1 .submit{
+	display: inline-block;
+	font-size: 16px;
+	background: var(--main-color);
+	color: var(--text-color);
+	width: 160px;
+	transition: all .45s ease;
+}
+.contact-form1 .submit:hover{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+.account-table {
+    border-collapse: collapse;
+    width: 80%;
+    margin-top: 20px;
+    font-size: 18px;
+}
+.account-table td, .account-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+.account-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+.account-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+
+
+
+

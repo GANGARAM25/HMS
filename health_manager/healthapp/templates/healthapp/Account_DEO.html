@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> My Health Manager</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    </head>
+
+    <body>
+
+        <header>
+            <div class="navbar">
+                <div class="nav-left">
+                    <a class="nav--logo" href="{% url 'home_deo' %}">
+                        <span>My</span>
+                        <b>Health</b>
+                        <span>Manager</span>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a class="btn is-w" href="{% url 'account_deo' %}">My Account</a>
+                    <a class="btn is-w" href="{% url 'menu_deo' %}">Menu</a>
+                    <a class="btn is-w" href="/q">Logout</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="AccountD">
+            <div class="AD">
+                <div class="ad">
+                    <h2>Account Details</h2>
+                </div>
+                <table class="account-table">
+                    <tr>
+                        <td>User Name</td>
+                        <td>{{account.0}}</td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td>{{account.1}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email ID</td>
+                        <td>{{account.2}}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number</td>
+                        <td>{{account.3}}</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <style>
+            .content {
+                text-align: center;
+            }
+
+            .custom-btn {
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 10px 10px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+                border-radius: 8px;
+                outline: none;
+                box-shadow: none;
+            }
+            .input-field {
+                padding: 12px 5px;
+            }
+
+            input {
+                font-size: 16px;
+                display: block;
+                font-family: 'Rubik', sans-serif;
+                width: 30%;
+                padding: 8px 1px;
+                border: 0;
+                border-bottom: 1px solid #747474;
+                outline: none;
+                -webkit-transition: all .2s;
+                transition: all .2s;
+            }
+        </style>
+        <form action="{% url 'account_deo' %}" method="POST" name="register">
+            {% csrf_token %}
+            <section>
+                <h2> Change Password</h2>
+                <div class="content">
+                    <div class="input-field">
+                        <input type="password" placeholder="Enter New Password" name="password" autocomplete="new-password">
+                    </div>
+                    <div class="input-field">
+                        <input type="password" placeholder="Confirm Password" name="password1" autocomplete="new-password">
+                    </div class="input-field">
+                        <input type="submit" value="Change Password" class="custom-btn">
+                    </div>
+                </div>
+            </section>
+        </form>
+        <section>
+            <div class="message">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </section>
+    </body>
+</html>

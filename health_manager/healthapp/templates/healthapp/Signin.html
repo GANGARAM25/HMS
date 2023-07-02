@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+    <meta charset="UTF-8">
+    <title>My Health Manager SignIn Page</title>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:400,700'>
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+    </head>
+    <body>
+        <header>
+            <div class="navbar">
+                <div class="nav-left">
+                    <a class="nav--logo" href="#">
+                        <span>My</span>
+                        <b>Health</b>
+                        <span>Manager</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="login-form">
+            <form action="{% url 'Signin' %}" method="POST">
+                {% csrf_token %}
+                <h1>Login</h1>
+                <div class="content">
+                    <div class="custom-select">
+                        <label for="type"><b>User Type</b></label>
+                        <select name="Usertype" id="user" style="width: 300px; font-size: 1rem;">
+                            <option value="Front-Desk Operator">Front-Desk Operator</option>
+                            <option value="Data-Entry Operator">Data-Entry Operator</option>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Database Administrator">Database Administrator</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" placeholder="Name" name="name" autocomplete="nope">
+                    </div>
+                    <div class="input-field">
+                        <input type="password" placeholder="Password" name="password" autocomplete="new-password">
+                    </div>
+                    <div class="signin">
+                        <input type="submit" value="Sign In" class="custom-btn">
+                    </div>
+                    <div class="register">
+                        <a href="{% url 'Signup_FDO' %}" class="btn is-w">Register as Front-Desk Operator</a>
+                        <a href="{% url 'Signup_DBA' %}" class="btn is-w">Register as Database Administrator</a>
+                        <a href="{% url 'Signup_DEO' %}" class="btn is-w">Register as Data-Entry Operator</a>
+                        <a href="{% url 'Signup_DOC' %}" class="btn is-w">Register as Doctor</a>
+                    </div>
+                    <div class="message">
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- <script  src="js/script.js"></script> -->
+    </body>
+</html>

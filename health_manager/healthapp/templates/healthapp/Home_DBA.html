@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> My Health Manager</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    </head>
+
+    <body>
+
+        <header>
+            <div class="navbar">
+                <div class="nav-left">
+                    <a class="nav--logo" href="{% url 'home_dba' %}">
+                        <span>My</span>
+                        <b>Health</b>
+                        <span>Manager</span>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a class="btn is-w" href="{% url 'account_dba' %}">My Account</a>
+                    <a class="btn is-w" href="{% url 'menu_dba' %}">Menu</a>
+                    <a class="btn is-w" href="/q">Logout</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Home Section Design -->
+        <section class="home" id="home">
+            <div class="slide">
+                <span class="one">Welcome</span>
+                <span class="two">{{username}}</span>
+            </div>
+            <div class="picture">
+                <img src="{% static 'images/main.png' %}" alt="">
+            </div>
+            <div class="slide">
+                <h1>Hospital Management Software</h1>
+                <p> Handling patient bills and appointment used to be a chaotic scene in hospitals and clinics. Not anymore! With the arrival of our <span>My Health Manager</span> , a systematic process has evolved over the time. The best part of this software is that it has reduced the use of paper, keeping all important information in one place to access. Doctors could coordinate with other departments with great ease, regarding medical health records. The software has helped in saving time as prescriptions, bills and other calculations are maintained digitally. This helps Doctors to concentrate on their core activities. <br> </p>
+                <h1>Manage Appointments, Bills, Payments and Patient Data with Ease!</h1>
+                <div class="info">
+                    <div class="box">
+                        <h3>Appointments</h3>
+                        <p> 
+                            <ul>
+                                Set up timings without any hurdle
+                            </ul>
+                            <ul>
+                                Manage appointments with ease
+                            </ul>
+                            <ul>
+                                Handle the queue in a waiting room instantly
+                            </ul>
+                        </p>
+                    </div>
+                    <div class="box">
+                        <h3>Billing</h3>
+                        <p> 
+                            <ul>
+                                Generate bills in a few clicks
+                            </ul>
+                            <ul>
+                                Manage payments with ease
+                            </ul>
+                            <ul>
+                                Printed receipts signifying the brand name
+                            </ul>
+                    </div>
+                    <div class="box">
+                        <h3>Patient Records</h3>
+                        <p> 
+                            <ul>
+                                Maintain patient records with ease
+                            </ul>
+                            <ul>
+                                Access patient records from anywhere
+                            </ul>
+                            <ul>
+                                Manage patient data with ease
+                            </ul>
+                    </div>
+                    <div class="box">
+                        <h3>Safety & Security</h3>
+                        <p> 
+                            <ul>
+                                Confidentiality is priority! 
+                            </ul>
+                            <ul>
+                                Data is safe and secure
+                            </ul>
+                            <ul>
+                                We comply with the international data norms
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <div class="contact-text">
+                <h2>Our <span>Team!</span></h2>
+                <p> </p>
+                <div class="list">
+                    <li><a href="#"><big><b>Kanchi Mohan Krishna</b></big></a></li>
+                    <li><a href="#"><big><b>Gangaram Sudewad</b></big></a></li>
+                    <li><a href="#"><big><b>Lav Jharwal</b></big></a></li>
+                </div>
+
+                <div class="contact-icons">
+                    <a href="https://www.linkedin.com/in/mohan-krishna-kanchi/" target="_blank"><i class='bx bxl-linkedin' ></i></a>
+                    <a href="https://www.facebook.com/mohankrishna.kanchi.1" target="_blank"><i class='bx bxl-facebook' ></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form action="">
+                    <input type="name" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email Address" required>
+                    <input type="" placeholder="Your Mobile Number" required>
+                    <textarea name="" id="" cols="35" rows="10" placeholder="How Can We Help You ?" required></textarea>
+                    <input type="submit" value="Send Message" class="submit" required>
+                </form>
+            </div>
+        </section>
+
+        <section class="end">
+            <div class="last-text">
+                <p>Copyright © 2023 by My Health Manager , All Rights Reserved.</p>
+            </div>
+            <div class="top">
+                <a href="#home"><i class='bx bx-up-arrow-alt' ></i></a>
+            </div>
+        </section>
+
+        <script type="text/javascript" src="js/script.js"></script>
+
+    </body>
+</html>

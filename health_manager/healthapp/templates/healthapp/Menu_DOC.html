@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> My Health Manager</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    </head>
+
+    <body style="background-color:pink;">
+
+        <header>
+            <div class="navbar">
+                <div class="nav-left">
+                    <a class="nav--logo" href="{% url 'home_doc' %}">
+                        <span>My</span>
+                        <b>Health</b>
+                        <span>Manager</span>
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <a class="btn is-w" href="{% url 'account_doc' %}">My Account</a>
+                    <a class="btn is-w" href="{% url 'menu_doc' %}">Menu</a>
+                    <a class="btn is-w" href="/q">Logout</a>
+                </div>
+            </div>            
+        </header>
+
+        <section>
+            <div class="contact-form1">
+                <form action="{% url 'menu_doc' %}" method="POST" name="Appointment_1">
+                    {% csrf_token %}
+                    <h1>Upcoming Appointments</h1>
+                    <style>
+                        table {
+                            border-collapse: collapse;
+                            width: 100%;
+                            background-color: #f2f2f2;
+                            border: 1px solid #ddd;
+                            margin-top: 30px;
+                        }
+                    
+                        th, td {
+                            text-align: left;
+                            padding: 12px;
+                            border: 1px solid #ddd;
+                        }
+                    
+                        th {
+                            background-color: #008CBA;
+                            color: white;
+                        }
+                    
+                        tr:nth-child(even) {
+                            background-color: #f9f9f9;
+                        }
+                    
+                        button {
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 8px 16px;
+                            border: none;
+                            cursor: pointer;
+                            border-radius: 5px;
+                        }
+                    
+                        button:hover {
+                            background-color: #3e8e41;
+                        }
+                    </style>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Appointment-ID</th>
+                                <th>Patient SSN</th>
+                                <th>Slot</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in account0 %}
+                                <tr>
+                                    <input type="hidden" value="{{ forloop.counter0 }}" name="row_num">
+                                    <td>{{ row.0 }}</td>
+                                    <td>{{ row.1 }}</td>
+                                    <td>{{ row.3 }}</td>
+                                    <td>{{ row.4 }}</td>
+                                    <td><button type="submit">Appointment Done</button></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </form>
+
+                <form action="{% url 'menu_doc' %}" method="POST" name="register">
+                    {% csrf_token %}
+                    <input type="name" placeholder="Patient SSN" name="ssn" required>
+                    <input type="submit" value="Get Patient Info" class="submit" required>
+                </form>
+
+                <h1> Patient Information</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient SSN</th>
+                            <th>Patient Name</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Insurance ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in account2 %}
+                            <tr>
+                                <td>{{ row.0 }}</td>
+                                <td>{{ row.1 }}</td>
+                                <td>{{ row.2 }}</td>
+                                <td>{{ row.3 }}</td>
+                                <td>{{ row.4 }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <form action="{% url 'menu_doc' %}" method="POST" name="register1">
+                    {% csrf_token %}
+                    <input type="name" placeholder="Patient SSN" name="ssn" required>
+                    <input type="hidden" value="123" name="email">
+                    <input type="submit" value="Patient Prescription" class="submit" required>
+                </form>
+
+                <h1> Patient Prescriptions</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Physician Name</th>
+                            <th>Patient SSN</th>
+                            <th>Image Name</th>
+                            <th>Description</th>
+                            <th>AppointmentID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in account1 %}
+                            <tr>
+                                <td>{{ row.0 }}</td>
+                                <td>{{ row.1 }}</td>
+                                <td>{{ row.2 }}</td>
+                                <td>{{ row.3 }}</td>
+                                <td>{{ row.4 }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <form action="{% url 'menu_doc' %}" method="POST" name="image">
+                    {% csrf_token %}
+                    <input type="name" placeholder="Image Name" name="image_1">
+                    <input type="submit" value="Display Image" class="submit" required>
+                </form>
+
+                <h1> Image Results</h1>
+                <ul>
+                    <img src="data:image/jpg;base64,{{base64_image}}" width="600px" alt = "Image">
+                </ul>
+
+                <div class="message">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
